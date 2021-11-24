@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_blog/anasayfa.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -167,6 +168,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => AnaSayfa()),
+                    (route) => true);
+              },
+              icon: const Icon(Icons.home)),
           IconButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut().then((value) =>
